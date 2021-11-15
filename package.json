@@ -1,0 +1,19 @@
+{
+  "name": "facerecog-doorbell-workshop",
+  "version": "1.0.0",
+  "description": "Example code tied to talk \"Hacking a smart doorbell to do smart recognition\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "iot",
+    "smarthome",
+    "ai"
+  ],
+  "author": "SmartHomeDan (DannyB648)",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  }
+}
