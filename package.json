@@ -15,5 +15,11 @@
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "promisify": "0.0.3",
+    "ring-client-api": "^9.23.0",
+    "uninstall": "0.0.0"
   }
 }
