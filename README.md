@@ -10,7 +10,7 @@ Some Useful Links:
 
 **Ring Doorbell Integration Library:** https://github.com/dgreif/ring
 
-**Guide to get a valid Ring API Token via the backdoor: **https://github.com/dgreif/ring/wiki/Refresh-Tokens
+**Guide to get a valid Ring API Token via the backdoor:** https://github.com/dgreif/ring/wiki/Refresh-Tokens
 
 *If you do end up building anything cool on top of this ring library, please consider sponsoring Dusty - he works really hard to keep the Ring API open and accessible*
 
