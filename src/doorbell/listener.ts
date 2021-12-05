@@ -1,16 +1,18 @@
 // ------------------------------- NODE MODULES -------------------------------
-
-import { RingApi } from 'ring-client-api';
+require('dotenv').config();
+import { RingApi, RingCamera } from 'ring-client-api';
 
 // ------------------------------ CUSTOM MODULES ------------------------------
 
 import { authentication } from "./authentication";
+import { identifyFaces } from '../face-api/azure';
+import { getSnapshotFromRing } from './snapshot';
 
 // -------------------------------- VARIABLES ---------------------------------
 // ----------------------------- FILE DEFINITION ------------------------------
 
 export const doorbellListener = async (): Promise<void> => {
-    let ring;
+    let ring: RingApi;
 
     try {
 
@@ -29,17 +31,32 @@ export const doorbellListener = async (): Promise<void> => {
     // When onRefreshTokenUpdated fires, we save the token to our .env file
     ring.onRefreshTokenUpdated.subscribe(authentication);
     
-    let allCameras;
+    let allCameras: RingCamera[];
     try {
         allCameras = await ring.getCameras();
     } catch (err) {
         console.log(err);
-    }
-
-    if (!allCameras) {
         throw new Error('No Cameras Retreived from Ring')
     }
 
-    allCameras[0].onDoorbellPressed.subscribe();
+    allCameras[0].onDoorbellPressed.subscribe(async (event: any) => {                   
+        
+        const fileLocation = await getSnapshotFromRing(allCameras[0].id, ring);
+
+        const faces = await identifyFaces(fileLocation);
+
+        if (!faces) {
+            console.log(`There is something moving outside, but I don't think it is a person`);
+    
+            return;
+        }
+
+        let string;
+        if (faces.people.length > 0) {
+            console.log(`${faces.people.join(' and ')} ${(faces.peopleTotal > 1 ? 'are' : 'is')} at the door!`);
+        } else {
+            console.log(`There ${(faces.peopleTotal > 1 ? 'are some people' : 'is someone')} at the door, but I don't recognise them!`);
+        }
+    });
 };
 

@@ -1,4 +1,5 @@
 // ------------------------------- NODE MODULES -------------------------------
+require('dotenv').config();
 
 import { ApiKeyCredentials } from "@azure/ms-rest-js";
 import { FaceClient } from "@azure/cognitiveservices-face";

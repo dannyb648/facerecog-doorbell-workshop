@@ -4,7 +4,9 @@
   "description": "Example code tied to talk \"Hacking a smart doorbell to do smart recognition\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "keywords": [
     "iot",
@@ -19,9 +21,10 @@
   "dependencies": {
     "@azure/cognitiveservices-face": "^4.2.0",
     "@azure/ms-rest-js": "^2.6.0",
+    "@types/node": "^16.11.11",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "promisify": "0.0.3",
-    "ring-client-api": "^9.23.0",
-    "uninstall": "0.0.0"
+    "ring-client-api": "^9.23.0"
   }
 }
