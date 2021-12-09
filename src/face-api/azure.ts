@@ -71,8 +71,8 @@ export const identifyFaces = async (image: string): Promise<Identifcations | voi
 
 const detectFacesFromImage = async (image: string, client: any): Promise<Face[]> => {
     // read in snapshot taken by photo as a data stream
-    const filename = `snapshot.jpg`;
-    const stream = await promises.readFile(filename);
+    // const filename = ``;
+    const stream = await promises.readFile(image);
 
     // get all detected with client.face.detectWithStream 
     // pass in the image stream
